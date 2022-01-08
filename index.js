@@ -28,10 +28,29 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'Technology Used',
-        message: "Enter all languages used in the project: ",
+        name: 'Installation Instructions',
+        message: "Please provide installation instruction for this project: ",
     },
-    // continue the above pattern for installation instructions, usage information, contribution guidelines, and test instructions
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Enter how this program is intended to be used: '
+    },
+    {
+        type: 'input',
+        name: 'contributions',
+        message: 'How should contributions be made to this project?',
+        choices: [
+            'Fork and push updates to separate branch',
+            'Push updates to main branch',
+        ],
+    },
+    {
+        type: 'input',
+        name: 'test-instructions',
+        message: 'Enter test instructions for this program: ', 
+    },
+    // continue the above pattern for  and test instructions
     {
         // I don't know much about licenses...but I found some examples here. Maybe this is what they mean.
         // googled how to do the badge https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
@@ -42,6 +61,7 @@ const questions = [
             'Apache 2.0 License',
             'Boost Software License 1.0',
             'BSD 3-Clause License',
+            'none needed',
         ],
     },
     {
@@ -125,9 +145,6 @@ const tableOfContents = '## Table of Contents\n' +
 
 
 // TODO: Include packages needed for this application
-
-// TODO: Create an array of questions for user input
-const questions = [];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
