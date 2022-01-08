@@ -28,7 +28,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'Installation Instructions',
+        name: 'installation',
         message: "Please provide installation instruction for this project: ",
     },
     {
@@ -37,7 +37,7 @@ const questions = [
         message: 'Enter how this program is intended to be used: '
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'contributions',
         message: 'How should contributions be made to this project?',
         choices: [
@@ -50,18 +50,16 @@ const questions = [
         name: 'test-instructions',
         message: 'Enter test instructions for this program: ', 
     },
-    // continue the above pattern for  and test instructions
     {
-        // I don't know much about licenses...but I found some examples here. Maybe this is what they mean.
-        // googled how to do the badge https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
         type: 'list',
         name: 'license',
         message: 'Which license would you like for your project?',
         choices: [
-            'Apache 2.0 License',
+            'MIT',
+            'Apache 2.0',
+            'GNU GPL 3.0',
             'Boost Software License 1.0',
             'BSD 3-Clause License',
-            'none needed',
         ],
     },
     {
@@ -76,7 +74,24 @@ const questions = [
     },
 ];
 
-// Create our empty readme file. https://www.tutorialkart.com/nodejs/create-file-in-nodejs-using-node-fs-module/
+function getLicense(License) {
+    let licenseIcon;
+    switch (License) {
+        case "MIT":
+        licenseIcon = { name: "MIT", color: "blue"};
+        break;
+        case "Apache 2.0":
+        licenseIcon = { name: "Apache+2.0", color: "green"};
+        break;
+        case "GNU GPL 3.0":
+        licenseIcon = { name: "GNU+GPL+3.0", color: "red"};
+        break;
+    }
+    return `![License](https://img.shields.io/static/v1?label=license&message=${licenseIcon.name}&color=${licenseIcon.color})`;    
+
+};
+
+// Create your empty readme file. https://www.tutorialkart.com/nodejs/create-file-in-nodejs-using-node-fs-module/
 fs.writeFile('README.md', '', function (err) {
     if (err) {
         console.log("README already exists. Delete if you want generate another one");

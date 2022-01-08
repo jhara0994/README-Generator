@@ -1,4 +1,4 @@
-# README Generator
+# Jrod's Project
 ![License](undefined)
 ## Table of Contents
 
@@ -14,5 +14,5 @@
 ## Contributing
 ## Tests
 ## Questions
-Github Username: github.com/jhara0994
+Github Username: jhara0994
 Github Email: jharalson29@gmail.com
