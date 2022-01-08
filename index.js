@@ -58,8 +58,8 @@ const questions = [
             'MIT',
             'Apache 2.0',
             'GNU GPL 3.0',
-            'Boost Software License 1.0',
-            'BSD 3-Clause License',
+            'Boost Software 1.0',
+            'BSD 3-Clause',
         ],
     },
     {
@@ -102,34 +102,37 @@ inquirer.prompt(questions).then((answers) => {
     logStream.write(tableOfContents);
 
     // Description
-    logStream.write(`# ${answers['description']}\n`);
+    logStream.write(`## Description: ${answers['description']}\n`);
 
     // Installation
-    logStream.write(`# ${answers['installation']}\n`);
+    logStream.write(`## Installation: ${answers['installation']}\n`);
 
     // Usage
-    logStream.write(`# ${answers['usage']}\n`);
+    logStream.write(`## Usage: ${answers['usage']}\n`);
 
     // Contributing
-    logStream.write(`# ${answers['contributions']}\n`);
+    logStream.write(`## Contributions: ${answers['contributions']}\n`);
 
     // Tests
-    logStream.write('## Tests\n');
+    logStream.write(`## Test-Instructions: ${answers['test-instructions']}\n`);
 
     // Questions
-    logStream.write('## Questions\n');
+    logStream.write('## Questions:\n');
     logStream.write(`Github Username: ${answers['githubname']}\n`);
     // TODO: Add profile link
-    logStream.write(`Github Email: ${answers['email']}\n`);
+    logStream.write(`Email: ${answers['email']}\n`);
+    logStream.write('For questions concerning this Generator, please reach out on Github or via email.')
 
 });
 
 // Make a object to store the badges images, add more if you want. I'm not even sure these are the right things,
 // but they probably are.
 const badgesUrlsMap = {
-    'Apache 2.0 License': 'https://img.shields.io/badge/License-Apache_2.0-blue.svg',
-    'Boost Software License 1.0': 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg',
-    'BSD 3-Clause License': 'https://img.shields.io/badge/License-BSD_3--Clause-blue.svg'
+    'MIT': 'https://img.shields.io/badge/License-MIT-blue.svg',
+    'Apache 2.0': 'https://img.shields.io/badge/License-Apache_2.0-green.svg',
+    'GNU GPL 3.0': '',
+    'Boost Software 1.0': 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg',
+    'BSD 3-Clause': 'https://img.shields.io/badge/License-BSD_3--Clause-blue.svg'
 }
 
 // Build the table of contents.
@@ -145,9 +148,6 @@ const tableOfContents = '## Table of Contents\n' +
 
 
 // TODO: Include packages needed for this application
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {}
