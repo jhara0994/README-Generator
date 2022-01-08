@@ -1,4 +1,4 @@
-# Jrod's Project
+# Jrod's README
 ![License](undefined)
 ## Table of Contents
 
@@ -8,11 +8,11 @@
 4.  [Contributing](#contributing)
 5.  [Tests](#tests)
 6.  [Questions](#questions)
-## Description
-## Installation
-## Usage
-## Contributing
+# Quality README Generator
+# Install inquirer and node js
+# to create a README
+# Push updates to main branch
 ## Tests
 ## Questions
-Github Username: jhara0994
-Github Email: jharalson29@gmail.com
+Github Username: github.com/jhara0994
+Github Email: jharalson29

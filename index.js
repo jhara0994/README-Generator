@@ -74,27 +74,12 @@ const questions = [
     },
 ];
 
-function getLicense(License) {
-    let licenseIcon;
-    switch (License) {
-        case "MIT":
-        licenseIcon = { name: "MIT", color: "blue"};
-        break;
-        case "Apache 2.0":
-        licenseIcon = { name: "Apache+2.0", color: "green"};
-        break;
-        case "GNU GPL 3.0":
-        licenseIcon = { name: "GNU+GPL+3.0", color: "red"};
-        break;
-    }
-    return `![License](https://img.shields.io/static/v1?label=license&message=${licenseIcon.name}&color=${licenseIcon.color})`;    
-
-};
-
 // Create your empty readme file. https://www.tutorialkart.com/nodejs/create-file-in-nodejs-using-node-fs-module/
 fs.writeFile('README.md', '', function (err) {
     if (err) {
         console.log("README already exists. Delete if you want generate another one");
+    } else {
+        console.log("Quality README file has been created!")
     }
 });
 
@@ -117,16 +102,16 @@ inquirer.prompt(questions).then((answers) => {
     logStream.write(tableOfContents);
 
     // Description
-    logStream.write('## Description\n');
+    logStream.write(`# ${answers['description']}\n`);
 
     // Installation
-    logStream.write('## Installation\n');
+    logStream.write(`# ${answers['installation']}\n`);
 
     // Usage
-    logStream.write('## Usage\n');
+    logStream.write(`# ${answers['usage']}\n`);
 
     // Contributing
-    logStream.write('## Contributing\n');
+    logStream.write(`# ${answers['contributions']}\n`);
 
     // Tests
     logStream.write('## Tests\n');
