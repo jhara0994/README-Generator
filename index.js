@@ -78,9 +78,7 @@ const questions = [
 fs.writeFile('README.md', '', function (err) {
     if (err) {
         console.log("README already exists. Delete if you want generate another one");
-    } else {
-        console.log("Quality README file has been created!")
-    }
+    } 
 });
 
 // Proper way to append a file with a stream
@@ -102,26 +100,34 @@ inquirer.prompt(questions).then((answers) => {
     logStream.write(tableOfContents);
 
     // Description
-    logStream.write(`## Description: ${answers['description']}\n`);
+    logStream.write(`## Description:\n`) 
+    logStream.write(`${answers['description']}\n`);
 
     // Installation
-    logStream.write(`## Installation: ${answers['installation']}\n`);
+    logStream.write(`## Installation:\n`) 
+    logStream.write(`${answers['installation']}\n`);
 
     // Usage
-    logStream.write(`## Usage: ${answers['usage']}\n`);
+    logStream.write(`## Usage:\n`) 
+    logStream.write(`${answers['usage']}\n`);
+
+    // License
+    logStream.write(`## License:\n`) 
+    logStream.write(`${answers['license']}\n`);
 
     // Contributing
-    logStream.write(`## Contributions: ${answers['contributions']}\n`);
+    logStream.write(`## Contributing:\n`) 
+    logStream.write(`${answers['contributions']}\n`);
 
     // Tests
-    logStream.write(`## Test-Instructions: ${answers['test-instructions']}\n`);
+    logStream.write(`## Test-Instructions:\n`)
+    logStream.write(`${answers['test-instructions']}\n`);
 
     // Questions
     logStream.write('## Questions:\n');
     logStream.write(`Github Username: ${answers['githubname']}\n`);
-    // TODO: Add profile link
     logStream.write(`Email: ${answers['email']}\n`);
-    logStream.write('For questions concerning this Generator, please reach out on Github or via email.')
+    logStream.write('For questions concerning this README Generator, please reach out on Github or email.')
 
 });
 
@@ -130,7 +136,7 @@ inquirer.prompt(questions).then((answers) => {
 const badgesUrlsMap = {
     'MIT': 'https://img.shields.io/badge/License-MIT-blue.svg',
     'Apache 2.0': 'https://img.shields.io/badge/License-Apache_2.0-green.svg',
-    'GNU GPL 3.0': '',
+    'GNU GPL 3.0': 'https://img.shields.io/badge/License-GNU_GPL_3.0-yellow.svg',
     'Boost Software 1.0': 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg',
     'BSD 3-Clause': 'https://img.shields.io/badge/License-BSD_3--Clause-blue.svg'
 }
@@ -141,9 +147,10 @@ const tableOfContents = '## Table of Contents\n' +
     '1.  [Description](#description)\n' +
     '2.  [Installation](#installation)\n' +
     '3.  [Usage](#usage)\n' +
-    '4.  [Contributing](#contributing)\n' +
-    '5.  [Tests](#tests)\n' +
-    '6.  [Questions](#questions)\n';
+    '4.  [License](#license)\n' +
+    '5.  [Contributing](#contributing)\n' +
+    '6.  [Tests](#test-instructions)\n' +
+    '7.  [Questions](#questions)\n';
 
 
 
