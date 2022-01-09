@@ -1,20 +1,7 @@
-// I tried to keep the file and comments in the order that I did things for clarity.
-// You need to delete the file after each time you run it. You could handle that a few different ways but based on the AC it
-// doesn't look like that is a requirement.
-
-// First, find the package on NPM for help getting started
-// https://github.com/jhara0994/README-Generator
-// Looks like they have some examples here: https://github.com/SBoudrias/Inquirer.js/tree/master/packages/inquirer/examples
-
-// The first thing I did was go ahead and install the package in an empty folder using `npm i inquirer`
-// Now we need a gitignore file. This is good practice because you don't want to store npm packages in your own project.
-
-// Looks like we need to ask for a bunch of info about the project. So we will make prompts
-// and store each response as we go. When we are done we will take all the responses and generate a file.
-
 const inquirer = require('inquirer');
 const fs = require("fs");
 
+// inquirer prompts
 const questions = [
     {
         type: 'input',
@@ -37,13 +24,9 @@ const questions = [
         message: 'Enter how this program is intended to be used: '
     },
     {
-        type: 'list',
+        type: 'input',
         name: 'contributions',
-        message: 'How should contributions be made to this project?',
-        choices: [
-            'Fork and push updates to separate branch',
-            'Push updates to main branch',
-        ],
+        message: 'Who contributed to this project?',
     },
     {
         type: 'input',
@@ -60,6 +43,7 @@ const questions = [
             'GNU GPL 3.0',
             'Boost Software 1.0',
             'BSD 3-Clause',
+            'No License Needed',
         ],
     },
     {
@@ -74,21 +58,17 @@ const questions = [
     },
 ];
 
-// Create your empty readme file. https://www.tutorialkart.com/nodejs/create-file-in-nodejs-using-node-fs-module/
 fs.writeFile('README.md', '', function (err) {
     if (err) {
         console.log("README already exists. Delete if you want generate another one");
     } 
 });
 
-// Proper way to append a file with a stream
+// Append file using a stream
 const logStream = fs.createWriteStream('README.md', {flags: 'a'});
 
 inquirer.prompt(questions).then((answers) => {
-    // Build the readme section by section, markdown cheatsheet https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-    // H1 for titles, smaller ones for sections. Don't forget to add newlines.
 
-    // Title at the top (let me know if this syntax doesn't make sense. It's called string interpolation.
     logStream.write(`# ${answers['title']}\n`);
 
     // Then Badge (grab it out of the map at the bottom)
@@ -101,27 +81,27 @@ inquirer.prompt(questions).then((answers) => {
 
     // Description
     logStream.write(`## Description:\n`) 
-    logStream.write(`${answers['description']}\n`);
+    logStream.write(`### ${answers['description']}\n`);
 
     // Installation
     logStream.write(`## Installation:\n`) 
-    logStream.write(`${answers['installation']}\n`);
+    logStream.write(`### ${answers['installation']}\n`);
 
     // Usage
     logStream.write(`## Usage:\n`) 
-    logStream.write(`${answers['usage']}\n`);
+    logStream.write(`### ${answers['usage']}\n`);
 
     // License
     logStream.write(`## License:\n`) 
-    logStream.write(`${answers['license']}\n`);
+    logStream.write(`### ${answers['license']}\n`);
 
     // Contributing
     logStream.write(`## Contributing:\n`) 
-    logStream.write(`${answers['contributions']}\n`);
+    logStream.write(`### ${answers['contributions']}\n`);
 
     // Tests
     logStream.write(`## Test-Instructions:\n`)
-    logStream.write(`${answers['test-instructions']}\n`);
+    logStream.write(`### ${answers['test-instructions']}\n`);
 
     // Questions
     logStream.write('## Questions:\n');
@@ -131,10 +111,9 @@ inquirer.prompt(questions).then((answers) => {
 
 });
 
-// Make a object to store the badges images, add more if you want. I'm not even sure these are the right things,
-// but they probably are.
+// object to store badges
 const badgesUrlsMap = {
-    'MIT': 'https://img.shields.io/badge/License-MIT-blue.svg',
+    'MIT': 'https://img.shields.io/badge/License-MIT-blue.svg', 
     'Apache 2.0': 'https://img.shields.io/badge/License-Apache_2.0-green.svg',
     'GNU GPL 3.0': 'https://img.shields.io/badge/License-GNU_GPL_3.0-yellow.svg',
     'Boost Software 1.0': 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg',
@@ -161,3 +140,42 @@ function init() {}
 
 // Function call to initialize app
 init();
+
+// create license links
+function createLicenseLink(License){
+    let x;
+    switch(License) {
+        case "MIT": return mitLink();
+        break;
+        case "Apache 2.0": return apacheLink();
+        break;
+        case "GNU GPL 3.0": return gnuLink();
+        break;
+        case "Boost Software 1.0": return boostLink();
+        break;
+        case "BSD 3-Clause": return bsdLink();
+        break;
+    }
+    return License;
+}
+
+// functions to pull license links
+function mitLink() {
+    return 'https://en.wikipedia.org/wiki/MIT_License'
+}
+
+function apacheLink() {
+    return 'https://www.apache.org/licenses/LICENSE-2.0'
+}
+
+function gnuLink() {
+    return 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+}
+
+function boostLink() {
+    return 'https://www.boost.org/users/license.html'
+}
+
+function bsdLink() {
+    return 'https://opensource.org/licenses/BSD-3-Clause'
+}

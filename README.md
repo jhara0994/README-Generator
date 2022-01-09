@@ -5,19 +5,22 @@
 1.  [Description](#description)
 2.  [Installation](#installation)
 3.  [Usage](#usage)
-4.  [Contributing](#contributions)
-5.  [Tests](#test-instructions)
-6.  [Questions](#questions)
+4.  [License](#license)
+5.  [Contributing](#contributing)
+6.  [Tests](#test-instructions)
+7.  [Questions](#questions)
 ## Description:
-This is a README generator meant to produce quality README files for your projects.
+### This program is designed to produce a quality README.md file based on user inputs.
 ## Installation:
-To use this program, you must have Inquirer NPM and Node.js installed on your machine.
+### To use this program, the user will need to have Inquirer npm and node.js installed on their computer.
 ## Usage:
-This program is to be used to create professional quality README.md files.
+### This program is designed to produce professional quality README files for all your project needs.
+## License:
+### MIT
 ## Contributing:
-Push updates to main branch
+### Jared Haralson, Bradley Peters
 ## Test-Instructions:
-To test this program, run the code through your integrated terminal using node.js
+### To test this program, run tghe integrated terminal in your coding software and use node.js to try the program out.
 ## Questions:
 Github Username: github.com/jhara0994
 Email: jharalson29@gmail.com
